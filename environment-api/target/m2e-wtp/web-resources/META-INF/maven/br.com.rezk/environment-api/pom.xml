@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <!-- This is our reference for our maven project -->
+  <parent>
+    <groupId>br.com.rezk</groupId>
+    <artifactId>environment</artifactId>
+    <version>1.0</version>
+  </parent>
+  
+  <artifactId>environment-api</artifactId>
+  <packaging>war</packaging>
+  <name>environment-api</name>
+  <description>The project's api layer</description>
+  
+  <dependencies>
+  <!-- This is how our API layer will access our service layer -->
+  	<dependency>
+  		<groupId>br.com.rezk</groupId>
+  		<artifactId>environment-service</artifactId>
+  		<version>${environment-service.version}</version>
+  	</dependency>
+  </dependencies>
+  
+</project>
