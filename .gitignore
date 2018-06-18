@@ -1,0 +1,15 @@
+*.settings
+*.classpath
+*.project
+*/bin
+*/target
+/target
+/bin
+.tern-project
+<<<<<<< HEAD
+.idea
+=======
+.idea/
+>>>>>>> refs/remotes/origin/master
+*.iml
+*.*~
