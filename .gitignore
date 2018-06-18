@@ -13,3 +13,5 @@
 >>>>>>> refs/remotes/origin/master
 *.iml
 *.*~
+*.class
+*/pom.properties
