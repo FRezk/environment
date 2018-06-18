@@ -3,7 +3,7 @@
 *.project
 */bin
 */target
-/target
+*/target/*
 /bin
 .tern-project
 <<<<<<< HEAD
