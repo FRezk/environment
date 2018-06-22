@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ServiceBeansConfig {
 	
-	//Here, we configure our Service's layer beans.
-	//Like DAOs (Data Access Object), mappers or anything else
-	//you may want to set as a bean and inject it anywhere. Ex:
+	//Here you config your API's beans.
+	//Basically, we configure beans from service layer, so we
+	//can access using depencendy injection.
 
 }
