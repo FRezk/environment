@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.rezk.environment.service.v1.HomeService;
 
 @RestController
-public class HomeResource { 
+public class HomeResource {
 	
 	@Autowired
 	private HomeService homeService;
