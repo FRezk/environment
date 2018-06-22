@@ -10,7 +10,7 @@ import br.com.rezk.environment.service.vo.SampleVO;
 public class HomeServiceProvider implements HomeService {
 	
 	@Autowired
-	Gson gson = new Gson();
+	private Gson gson = new Gson();
 
 	public String helloWorld() {
 		SampleVO vo = new SampleVO();

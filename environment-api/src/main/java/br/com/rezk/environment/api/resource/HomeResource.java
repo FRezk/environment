@@ -11,7 +11,7 @@ import br.com.rezk.environment.service.v1.HomeService;
 public class HomeResource { 
 	
 	@Autowired
-	public HomeService homeService;
+	private HomeService homeService;
 	
 	@RequestMapping(method=RequestMethod.GET, value = "/hello")
 	public String helloWorld(){
