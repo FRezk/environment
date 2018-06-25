@@ -42,7 +42,8 @@ Step 3 - Deploy your environment.
 3.1 - Deploy environment-api into your application server.
 
 
-**It's done! You're all set, you can test through the sample Hello World.** 
+**It's done! You're all set, you can test through the sample Hello World.**
+
 Its a GET method, and the path is 'environment-api/hello'.
 
 ![alt text](https://image.ibb.co/cvU5H8/readme3.jpg)
