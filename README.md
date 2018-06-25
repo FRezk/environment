@@ -25,13 +25,23 @@ Step 1 - Clone the environment.
 
 1.2 - Run a git clone into your folder.
 
-1.3 - Import the environment into your IDE as a maven project. I'm using Eclipse in this example.
+
+```
+Step 2 - Import maven project.
+```
+
+2.1 - Import the environment into your IDE as a maven project. I'm using Eclipse in this example.
 
 ![alt text](https://image.ibb.co/hbDUAT/readme2.jpg)
 
-1.4 - Deploy environment-api on your application server.
 
-1.5 - It's done! You're all set, you can test through the sample Hello World. Its a GET method, and the path is 'environment-api/hello'.
+```
+Step 3 - Deploy your environment.
+```
+
+3.1 - Deploy environment-api into your application server.
+
+**It's done! You're all set, you can test through the sample Hello World. Its a GET method, and the path is 'environment-api/hello'.
 
 ![alt text](https://image.ibb.co/cvU5H8/readme3.jpg)
 
