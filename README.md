@@ -53,4 +53,4 @@ Its a GET method, and the path is 'environment-api/hello'.
 
 * **Fernando D. Rezk** - [Environment](https://github.com/FRezk/environment.git)
 
-Feel free to leave a question, suggestion or a comment!
+Feel free to open an issue if you have any suggestion!
