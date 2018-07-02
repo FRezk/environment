@@ -1,10 +1,20 @@
 package br.com.rezk.environment.service.vo;
 
-public class CustomerVO {
+import java.io.Serializable;
+
+public class CustomerVO implements Serializable{
+	private static final long serialVersionUID = -5055633632600844846L;
 	
 	private String name;
 	private Integer age;
 	
+	public CustomerVO() {}
+	
+	public CustomerVO(String name, Integer age) {
+		this.name = name;
+		this.age = age;
+	}
+
 	public String getName() {
 		return name;
 	}

@@ -1,12 +1,17 @@
 package br.com.rezk.environment.api.config;
 
+import java.util.Random;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.google.gson.Gson;
 
+import br.com.rezk.environment.service.database.DataBaseMock;
+import br.com.rezk.environment.service.v1.CustomerService;
 import br.com.rezk.environment.service.v1.HomeService;
-import br.com.rezk.environment.service.v1.home.HomeServiceProvider;
+import br.com.rezk.environment.service.v1.provider.CustomerServiceProvider;
+import br.com.rezk.environment.service.v1.provider.HomeServiceProvider;
 
 @Configuration
 public class BeansConfig {
@@ -23,6 +28,21 @@ public class BeansConfig {
 	@Bean
 	public Gson gson(){
 		return new Gson();
+	}
+	
+	@Bean
+	public CustomerService customerService() {
+		return new CustomerServiceProvider();
+	}
+	
+	@Bean
+	public DataBaseMock	database() {
+		return new DataBaseMock();
+	}
+	
+	@Bean
+	public Random random() {
+		return new Random();
 	}
 
 }

@@ -1,4 +1,4 @@
-package br.com.rezk.environment.service.v1.home;
+package br.com.rezk.environment.service.v1.provider;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
