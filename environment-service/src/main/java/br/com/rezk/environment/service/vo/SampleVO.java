@@ -1,6 +1,7 @@
 package br.com.rezk.environment.service.vo;
 
 public class SampleVO {
+	
 	private String key;
 	private String projName;
 	private String author;
