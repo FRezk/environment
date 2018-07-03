@@ -17,7 +17,7 @@ public class CustomerServiceProvider implements CustomerService {
 	DataBaseMock dataBaseMock;
 	
 	@Autowired
-	private Gson gson = new Gson();
+	private Gson gson;
 	
 	@Autowired
 	private Random random;
