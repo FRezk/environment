@@ -13,7 +13,6 @@ import com.google.gson.Gson;
 
 import br.com.rezk.environment.service.request.CustomerRequest;
 import br.com.rezk.environment.service.v1.CustomerService;
-import br.com.rezk.environment.service.vo.CustomerVO;
 
 @RestController
 public class CustomerResource {
@@ -24,9 +23,9 @@ public class CustomerResource {
 	@Autowired
 	private Gson gson;
 	
-	@RequestMapping(method=RequestMethod.PUT, headers="Content-Type=application/json" , value="/customer", produces=MediaType.APPLICATION_JSON_VALUE)
-	public String createCustomer(@RequestBody CustomerVO customverVO) {
-		return customerService.createCustomer(customverVO);
+	@RequestMapping(method=RequestMethod.POST, headers="Content-Type=application/json" , value="/customer")
+	public String createCustomer(@RequestBody CustomerRequest request) {
+		return gson.toJson(customerService.createCustomer(request));
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/customer/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
@@ -34,10 +33,11 @@ public class CustomerResource {
 		return gson.toJson(customerService.readCustomer(id));
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, headers="Content-Type=application/json" , value="/customer")
-	public HttpStatus updateCustomer(@RequestBody CustomerRequest customerRequest) {
-		return customerService.updateCustomer(customerRequest) ? HttpStatus.ACCEPTED : HttpStatus.NOT_FOUND;
+	@RequestMapping(method=RequestMethod.PUT, headers="Content-Type=application/json" , value="/customer/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+	public String updateCustomer(@RequestBody CustomerRequest customerRequest, @PathVariable Long id) {
+		return gson.toJson(customerService.updateCustomer(customerRequest, id));
 	}
+	
 	
 	@RequestMapping(method=RequestMethod.DELETE, headers="Content-Type=application/json" , value="/customer")
 	public HttpStatus deleteCustomer(@RequestBody CustomerRequest customerRequest) {

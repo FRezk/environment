@@ -42,6 +42,14 @@ public abstract class DAO<T, PK extends Serializable> {
 		return result;
 	}
 	
+	public T merge(T t) {
+		beginTransaction();
+		session.merge(t);
+		commit(session);
+		
+		return t;
+	}
+	
 	private void beginTransaction() {
 		// Create a session
 		this.session = this.factory.getCurrentSession();

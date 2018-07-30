@@ -21,6 +21,9 @@ public class Customer {
 	@Column(name="last_name")
 	private String lastName;
 	
+	@Column(name="age")
+	private Long age;
+	
 	public Customer() {}
 	
 	public Customer(String name, String lastName) {
@@ -52,4 +55,12 @@ public class Customer {
 		this.name = name;
 	}
 
+	public Long getAge() {
+		return age;
+	}
+
+	public void setAge(Long age) {
+		this.age = age;
+	}
+	
 }

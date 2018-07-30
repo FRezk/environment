@@ -2,29 +2,39 @@ package br.com.rezk.environment.service.request;
 
 import java.io.Serializable;
 
-import br.com.rezk.environment.service.vo.CustomerVO;
-
 public class CustomerRequest implements Serializable{
+	private static final long serialVersionUID = -5055633632600844846L;
+	
+	private String name;
+	private String lastName;
+	private Long age;
+	
+	public CustomerRequest() {}
+	
+	public CustomerRequest(String name, Long age) {
+		this.name = name;
+		this.age = age;
+	}
 
-	private static final long serialVersionUID = -5641635891967430062L;
-	
-	private Integer id;
-	private CustomerVO customer;
-	
-	public Integer getId() {
-		return id;
+	public String getName() {
+		return name;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public CustomerVO getCustomer() {
-		return customer;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setCustomer(CustomerVO vo) {
-		this.customer = vo;
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
-	
-	
-	
+
+	public Long getAge() {
+		return age;
+	}
+	public void setAge(Long age) {
+		this.age = age;
+	}
 
 }

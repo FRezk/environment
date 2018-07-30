@@ -10,8 +10,8 @@ import org.springframework.web.context.annotation.ApplicationScope;
 import com.google.gson.Gson;
 
 import br.com.rezk.environment.service.dao.CustomerDAO;
-import br.com.rezk.environment.service.database.DataBaseMock;
 import br.com.rezk.environment.service.entity.Customer;
+import br.com.rezk.environment.service.mapper.CustomerMapper;
 import br.com.rezk.environment.service.v1.CustomerService;
 import br.com.rezk.environment.service.v1.HomeService;
 import br.com.rezk.environment.service.v1.provider.CustomerServiceProvider;
@@ -40,18 +40,21 @@ public class BeansConfig {
 	}
 
 	@Bean
-	public DataBaseMock database() {
-		return new DataBaseMock();
-	}
-
-	@Bean
+	@ApplicationScope
 	public Random random() {
 		return new Random();
 	}
 	
 	@Bean
+	@ApplicationScope
 	public CustomerDAO customerDAO() {
 		return new CustomerDAO();
+	}
+	
+	@Bean
+	@ApplicationScope
+	public CustomerMapper customerMapper() {
+		return new CustomerMapper();
 	}
 
 	@Bean
