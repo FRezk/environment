@@ -67,19 +67,6 @@
             <scope>provided</scope>
         </dependency>
 
-		<!-- Java Persistence API (JPA) -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-
-		<!-- For connection pooling -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-c3p0</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
 	</dependencies>
 
 </project>

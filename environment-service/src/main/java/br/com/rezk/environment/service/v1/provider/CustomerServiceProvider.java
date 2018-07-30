@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.google.gson.Gson;
 
+import br.com.rezk.environment.service.dao.CustomerDAO;
 import br.com.rezk.environment.service.database.DataBaseMock;
+import br.com.rezk.environment.service.entity.Customer;
 import br.com.rezk.environment.service.request.CustomerRequest;
 import br.com.rezk.environment.service.v1.CustomerService;
 import br.com.rezk.environment.service.vo.CustomerVO;
@@ -21,14 +23,17 @@ public class CustomerServiceProvider implements CustomerService {
 	
 	@Autowired
 	private Random random;
+	
+	@Autowired
+	private CustomerDAO customerDAO;
 
 	public String createCustomer(CustomerVO customerVO) {
 		dataBaseMock.getCustomerTableMock().put(random.nextInt(100 - 5) + 5, customerVO);
 		return gson.toJson(dataBaseMock.getCustomerTableMock());
 	}
 
-	public String readCustomer() {
-		return gson.toJson(dataBaseMock.getCustomerTableMock());
+	public Customer readCustomer(Long id) {
+		return customerDAO.find(id);
 	}
 
 	public Boolean updateCustomer(CustomerRequest customerRequest) {
