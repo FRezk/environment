@@ -5,15 +5,25 @@ import java.io.Serializable;
 public class CustomerRequest implements Serializable{
 	private static final long serialVersionUID = -5055633632600844846L;
 	
+	private Long id;
 	private String name;
 	private String lastName;
 	private Long age;
 	
 	public CustomerRequest() {}
 	
-	public CustomerRequest(String name, Long age) {
+	public CustomerRequest(String name, String lastName, Long age) {
 		this.name = name;
+		this.lastName = lastName;
 		this.age = age;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {

@@ -2,6 +2,7 @@ package br.com.rezk.environment.api.config;
 
 import java.util.Random;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,8 @@ import com.google.gson.Gson;
 import br.com.rezk.environment.service.dao.CustomerDAO;
 import br.com.rezk.environment.service.entity.Customer;
 import br.com.rezk.environment.service.mapper.CustomerMapper;
+import br.com.rezk.environment.service.mapper.ObjMapper;
+import br.com.rezk.environment.service.request.CustomerRequest;
 import br.com.rezk.environment.service.v1.CustomerService;
 import br.com.rezk.environment.service.v1.HomeService;
 import br.com.rezk.environment.service.v1.provider.CustomerServiceProvider;
@@ -59,11 +62,24 @@ public class BeansConfig {
 
 	@Bean
 	@ApplicationScope
-	public SessionFactory session() {
+	public Session session() {
 		// Create session factory
 		SessionFactory factory = new org.hibernate.cfg.Configuration().configure("hibernate.cfg.xml")
 				.addAnnotatedClass(Customer.class).buildSessionFactory();
-		return factory;
+		return factory.getCurrentSession();
 	}
-
+	
+	@Bean(name="customerToRequest")
+	public ObjMapper customerToRequest() {
+		ObjMapper customerToRequest = (Object entry) -> {
+			Customer customer = (Customer) entry;
+			CustomerRequest req = new CustomerRequest();
+			req.setId(customer.getId());
+			req.setName(customer.getName());
+			req.setLastName(customer.getLastName());
+			req.setAge(customer.getAge());
+			return req;
+		};
+		return customerToRequest;
+	}
 }

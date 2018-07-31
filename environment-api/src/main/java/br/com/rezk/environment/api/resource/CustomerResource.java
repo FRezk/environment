@@ -33,6 +33,11 @@ public class CustomerResource {
 		return gson.toJson(customerService.readCustomer(id));
 	}
 	
+	@RequestMapping(method=RequestMethod.GET, value="/customer", produces=MediaType.APPLICATION_JSON_VALUE)
+	public String listCustomers() {
+		return gson.toJson(customerService.listCustomers());
+	}
+	
 	@RequestMapping(method=RequestMethod.PUT, headers="Content-Type=application/json" , value="/customer/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public String updateCustomer(@RequestBody CustomerRequest customerRequest, @PathVariable Long id) {
 		return gson.toJson(customerService.updateCustomer(customerRequest, id));

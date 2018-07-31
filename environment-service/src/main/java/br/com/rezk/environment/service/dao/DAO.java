@@ -2,18 +2,17 @@ package br.com.rezk.environment.service.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class DAO<T, PK extends Serializable> {
 	
 	protected Class<T> clazz;
-
-	@Autowired
-	private SessionFactory factory;
 	
+	@Autowired
 	private Session session;
 	
 	@SuppressWarnings("unchecked")
@@ -26,10 +25,10 @@ public abstract class DAO<T, PK extends Serializable> {
 		}
 	}
 
-	public T insert(T t) {
+	public T persist(T t) {
 		beginTransaction();
 		session.save(t);
-		commit(session);
+		commit();
 		
 		return t;
 	}
@@ -37,7 +36,7 @@ public abstract class DAO<T, PK extends Serializable> {
 	public T find(PK pk) {
 		beginTransaction();
 		T result = session.get(this.clazz, pk);
-		commit(session);
+		commit();
 		
 		return result;
 	}
@@ -45,18 +44,33 @@ public abstract class DAO<T, PK extends Serializable> {
 	public T merge(T t) {
 		beginTransaction();
 		session.merge(t);
-		commit(session);
+		commit();
 		
 		return t;
 	}
 	
+	public void delete(T t) {
+		beginTransaction();
+		session.delete(t);
+		commit();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<T> list() {
+		beginTransaction();
+		Query<T> query = session.createQuery("from " + this.clazz.getName());
+		List<T> result = (List<T>) query.getResultList();
+		commit();
+		
+		return result;
+	}
+	
 	private void beginTransaction() {
 		// Create a session
-		this.session = this.factory.getCurrentSession();
 		this.session.beginTransaction();
 	}
 	
-	private void commit(Session session) {
+	private void commit() {
 		// Commit and close
 		this.session.getTransaction().commit();
 		this.session.close();
